@@ -6,6 +6,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.codigoronin.myfirstrealapp.presentation.screens.auth.login.components.LoginBottomBar
 import com.codigoronin.myfirstrealapp.presentation.screens.auth.login.components.LoginContent
 import com.codigoronin.myfirstrealapp.presentation.screens.auth.login.components.LoginTopBar
@@ -14,6 +15,7 @@ import com.codigoronin.myfirstrealapp.presentation.screens.auth.login.components
 @Composable
 fun LoginScreen(){
    Scaffold (
+       containerColor = Color.White,
        topBar = { LoginTopBar() },
        bottomBar = { LoginBottomBar() }
    ){
