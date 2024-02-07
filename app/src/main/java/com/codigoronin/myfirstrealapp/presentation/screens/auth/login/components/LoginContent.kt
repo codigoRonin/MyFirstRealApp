@@ -23,13 +23,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.codigoronin.myfirstrealapp.presentation.components.DefaultTextField
 import com.codigoronin.myfirstrealapp.R
 import com.codigoronin.myfirstrealapp.presentation.components.DefaultButton
+import com.codigoronin.myfirstrealapp.presentation.screens.auth.login.LoginViewModel
 import com.codigoronin.myfirstrealapp.presentation.theme.PrimaryColor
 
 @Composable
-fun LoginContent() {
+fun LoginContent( viewModel: LoginViewModel = hiltViewModel()) {
 
     Box(
         modifier = Modifier
@@ -47,24 +49,28 @@ fun LoginContent() {
             )
             DefaultTextField(
                 modifier = Modifier.padding(top = 4.dp),
-                value = "",
-                onValueChange = {  },
+                value = viewModel.state.email,
+                onValueChange = { viewModel.onEmailInput(it)},
                 label = "Correo electronico",
                 icon = Icons.Default.Email,
                 keyboardType = KeyboardType.Email,
-                errorMsg = "",
-                validateField = { }
+                errorMsg = viewModel.emailErrMsg,
+                validateField = { viewModel.validateEmail()
+                    viewModel.enabledLoginButton()}
             )
             Spacer(modifier = Modifier.size(4.dp))
             DefaultTextField(
                 modifier = Modifier.padding(top = 0.dp),
-                value ="",
-                onValueChange = {  },
+                value =viewModel.state.password,
+                onValueChange = {viewModel.onPasswordInput(it)},
                 label = "Contraseña",
                 icon = Icons.Default.Lock,
                 hideText = true,
-                errorMsg = "",
-                validateField = {  }
+                errorMsg = viewModel.passwordErrMsg,
+                validateField = {
+                    viewModel.validatePassword()
+                    viewModel.enabledLoginButton()
+                }
             )
             Text(
                 text = "¿Olvidaste tu contraseña?",
@@ -87,7 +93,7 @@ fun LoginContent() {
                     .padding(horizontal = 56.dp),
                 text = "INICIAR SESIÓN",
                 onClick = {  },
-                enabled = true
+                enabled = viewModel.isEnabledLoginButton
             )
             Spacer(modifier = Modifier.size(32.dp))
             LoginDivider()
