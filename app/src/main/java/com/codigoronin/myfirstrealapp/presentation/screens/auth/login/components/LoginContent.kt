@@ -92,7 +92,7 @@ fun LoginContent( viewModel: LoginViewModel = hiltViewModel()) {
                     .fillMaxWidth()
                     .padding(horizontal = 56.dp),
                 text = "INICIAR SESIÓN",
-                onClick = {  },
+                onClick = { viewModel.login() },
                 enabled = viewModel.isEnabledLoginButton
             )
             Spacer(modifier = Modifier.size(32.dp))

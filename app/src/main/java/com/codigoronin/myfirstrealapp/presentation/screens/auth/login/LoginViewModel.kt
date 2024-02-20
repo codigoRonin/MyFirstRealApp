@@ -5,12 +5,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.codigoronin.myfirstrealapp.domain.model.FirebaseResponse
+import com.codigoronin.myfirstrealapp.domain.use_cases.authentication.AuthUseCases
+import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor (): ViewModel(){
-
+class LoginViewModel @Inject constructor(private val authUseCases: AuthUseCases) : ViewModel() {
     //STATES
     var state by mutableStateOf(LoginState())
         private set
@@ -23,6 +27,15 @@ class LoginViewModel @Inject constructor (): ViewModel(){
 
     var isEnabledLoginButton = false
 
+    //RESPONSES
+    var loginResponse by mutableStateOf<FirebaseResponse<FirebaseUser>?>(null)
+
+
+    fun login() = viewModelScope.launch {
+        loginResponse = FirebaseResponse.Loading
+        val result = authUseCases.login(state.email, state.password)
+        loginResponse = result
+    }
     fun validateEmail(){
         if(Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
             isEmailValid=true

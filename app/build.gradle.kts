@@ -64,20 +64,22 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     //NAVIGATION COMPOSE
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // DAGGER HILT
     implementation("com.google.dagger:hilt-android:2.48.1")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 
     //ICONS LIBRARY
-    implementation ("androidx.compose.material:material-icons-extended:1.6.0")
+    implementation ("androidx.compose.material:material-icons-extended:1.6.1")
 
     //FIREBASE
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

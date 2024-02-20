@@ -14,18 +14,23 @@ import dagger.hilt.components.SingletonComponent
 @Module
 object AppModule {
 
-    //SERVICES
+    // FIREBASE
     @Provides
     fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
     //REPOSITORIES
     @Provides
-    fun provideAuthRepository(impl: AuthRepositoryImpl) : AuthRepository = impl
+    fun provideAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
 
-    //USE CASES
 
+    // USECASES
     @Provides
-    fun provideAuthUSeCases(repository: AuthRepository) = AuthUseCases(
-        login = Login(repository)
+    fun provideAuthUseCases(repository: AuthRepository) = AuthUseCases(
+
+        login = Login(repository),
+
     )
+
+
+
 }
