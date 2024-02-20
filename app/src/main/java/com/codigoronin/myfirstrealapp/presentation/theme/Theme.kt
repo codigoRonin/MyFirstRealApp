@@ -1,4 +1,4 @@
-package com.codigoronin.myfirstrealapp.ui.theme
+package com.codigoronin.myfirstrealapp.presentation.theme
 
 import android.app.Activity
 import android.os.Build

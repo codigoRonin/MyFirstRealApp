@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "916976450326",
+    "project_id": "my-first-real-app",
+    "storage_bucket": "my-first-real-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916976450326:android:3e08f1daf2179d0096ee37",
+        "android_client_info": {
+          "package_name": "com.codigoronin.myfirstrealapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5jyU7htnPgKhV6YC40clNE_07mBkMB_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
