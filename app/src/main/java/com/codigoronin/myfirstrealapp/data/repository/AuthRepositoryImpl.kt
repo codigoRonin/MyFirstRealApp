@@ -8,6 +8,10 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth): AuthRepository{
+
+    override val currentUser: FirebaseUser? get() = firebaseAuth.currentUser
+
+
     override suspend fun login(email: String, password: String): FirebaseResponse<FirebaseUser> {
         return try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
